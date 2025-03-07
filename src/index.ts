@@ -2,7 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import "express-async-errors";
-import errorHandler from "./api/middlewares/error-handler";
+import ErrorHandler from "./api/middlewares/error-handler.middleware";
 import router from "./api/routes";
 import { getEnv } from "./api/utils/env.util";
 
@@ -21,7 +21,7 @@ app.use(cors({ origin: "*" }));
 app.use(router);
 
 /* Global Error Handling Middleware */
-app.use(errorHandler);
+app.use(ErrorHandler);
 
 /* Start Server */
 const port = parseInt(getEnv("PORT") || "3000");
